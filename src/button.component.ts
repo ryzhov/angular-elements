@@ -1,33 +1,23 @@
-import {
-  Input,
-  Component,
-  ViewEncapsulation,
-  EventEmitter,
-  Output
-} from '@angular/core';
+import { Input, Component, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'custom-button',
-  template: `<button (click)="handleClick()">{{label}}</button>`,
-  styles: [
-    `
+  template: `<button (click)="onClick()">{{label}}</button>`,
+  styles: [`
     button {
-      border: solid 3px;
       padding: 8px 10px;
-      background: #bada55;
       font-size: 20px;
     }
-  `
-  ],
-  encapsulation: ViewEncapsulation.Native
+  `],
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class ButtonComponent {
   @Input() label = 'default label';
-  @Output() action = new EventEmitter<number>();
+  @Output() clickAction = new EventEmitter<number>();
   private clicksCt = 0;
 
-  handleClick() {
+  onClick() {
     this.clicksCt++;
-    this.action.emit(this.clicksCt);
+    this.clickAction.emit(this.clicksCt);
   }
 }
