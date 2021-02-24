@@ -1,4 +1,4 @@
-# Web Components with Angular 6 Elements
+# Web Components with Angular 11 Elements
 
 The simplest setup, built from scratch. 
 
